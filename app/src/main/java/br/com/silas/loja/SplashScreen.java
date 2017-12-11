@@ -10,7 +10,6 @@ import android.widget.ImageView;
 
 public class SplashScreen extends AppCompatActivity {
 
-    //Tempo que nosso splashscreen ficará visivel
     private final int SPLASH_DISPLAY_LENGTH = 3500;
 
     @Override
