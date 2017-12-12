@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="br.com.silas.breja.MenuPrincipal">
 
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/addBreja"
         android:layout_width="79dp"

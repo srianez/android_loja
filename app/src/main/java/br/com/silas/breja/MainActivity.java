@@ -1,5 +1,6 @@
 package br.com.silas.breja;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.util.SortedList;
@@ -28,35 +29,40 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        etUsuario = (EditText) findViewById(R.id.etUsuario);
-        etSenha = (EditText) findViewById(R.id.etSenha);
-        etEmail = (EditText) findViewById(R.id.etEmail);
     }
 
-    public void salvarUsuario(View v) {
-        BrejaAPI api = getRetrofit().create(BrejaAPI.class);
+    public void goCadUsuario(View v) {
+        Intent proximaTela = new Intent(this, CadUsuario.class);
+        //proximaTela.putExtra("TIMEVISITANTE", etTimeVisitante.getText().toString());
+        //proximaTela.putExtra("TIMECASA", etTimeCasa.getText().toString());
+        startActivity(proximaTela);
+    }
 
-        Usuario usuario = new Usuario();
+    public void goMenu(View v) {
 
-        usuario.setUsuario(etUsuario.getText().toString());
-        usuario.setSenha(etSenha.getText().toString());
-        usuario.setEmail(etEmail.getText().toString());
+/*        BrejaAPI api = getRetrofit().create(BrejaAPI.class);
 
-        api.salvarUser(usuario)
-                .enqueue(new Callback<Void>() {
+        api.buscarUsuario(etUsuario.getText().toString())
+                .enqueue(new Callback<Usuario>() {
+
                     @Override
-                    public void onResponse(Call<Void> call, Response<Void> response) {
-                        Toast.makeText(MainActivity.this,
-                                "Gravado com sucesso!", Toast.LENGTH_SHORT).show();
+                    public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+
+                        if (response.body().getUsuario() == null) {
+                            Toast.makeText(MainActivity.this,
+                                    "Usuário não encontrado!", Toast.LENGTH_LONG).show();
+                        }
                     }
 
                     @Override
-                    public void onFailure(Call<Void> call, Throwable t) {
+                    public void onFailure(Call<Usuario> call, Throwable t) {
                         Toast.makeText(MainActivity.this,
-                                "Deu ruim", Toast.LENGTH_SHORT).show();
-
+                                "Deu erro", Toast.LENGTH_LONG).show();
                     }
-                });
+                });*/
+
+                Intent proximaTela = new Intent(this, MenuPrincipal.class);
+                startActivity(proximaTela);
     }
 
     private Retrofit getRetrofit() {

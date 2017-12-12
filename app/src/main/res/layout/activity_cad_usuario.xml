@@ -12,9 +12,10 @@
     <LinearLayout
         android:id="@+id/formCadUsu"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="463dp"
         android:layout_centerInParent="true"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="16dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -22,6 +23,7 @@
             android:layout_margin="10dp"
             android:text="Usuário"
             android:textColor="#000000" />
+
         <EditText
             android:id="@+id/etUsuario"
             android:layout_width="fill_parent"
@@ -36,6 +38,7 @@
             android:layout_margin="10dp"
             android:text="Senha"
             android:textColor="#000000" />
+
         <EditText
             android:id="@+id/etSenha"
             android:layout_width="fill_parent"
@@ -43,7 +46,7 @@
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="0dp"
-            android:password="true"/>
+            android:password="true" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -51,26 +54,32 @@
             android:layout_margin="10dp"
             android:text="E-mail"
             android:textColor="#000000" />
+
         <EditText
             android:id="@+id/etEmail"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="0dp"/>
+            android:layout_marginRight="0dp" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/floatingActionButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="36dp"
+            android:clickable="true"
+            android:onClick="salvarUsuario"
+            app:backgroundTint="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_save"
+            tools:layout_editor_absoluteY="429dp" />
 
     </LinearLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
-        android:layout_width="55dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="36dp"
-        android:clickable="true"
-        app:backgroundTint="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_save"
-        tools:layout_editor_absoluteY="429dp"
-        tools:onClick="salvarUsuario" />
+
+
+
 
 </android.support.constraint.ConstraintLayout>
