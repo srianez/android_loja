@@ -1,4 +1,4 @@
-package br.com.silas.loja;
+package br.com.silas.breja;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

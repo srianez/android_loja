@@ -8,10 +8,11 @@ android:paddingBottom="16dp"
 android:paddingLeft="16dp"
 android:paddingRight="16dp"
 android:paddingTop="16dp"
-tools:context="br.com.silas.loja.SplashScreen"
+tools:context="br.com.silas.breja.SplashScreen"
 android:orientation="vertical"
 android:gravity="center"
-android:background="@color/background_splash">
+
+android:background="@drawable/gradient_background">
 
 <ImageView
     android:layout_width="150dp"

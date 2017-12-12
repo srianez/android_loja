@@ -1,4 +1,4 @@
-package br.com.silas.loja;
+package br.com.silas.breja;
 
 import org.junit.Test;
 
