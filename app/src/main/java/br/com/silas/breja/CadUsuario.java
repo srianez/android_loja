@@ -1,5 +1,6 @@
 package br.com.silas.breja;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -35,10 +36,19 @@ public class CadUsuario extends AppCompatActivity {
     public void salvarUsuario(View v) {
         BrejaAPI api = getRetrofit().create(BrejaAPI.class);
 
+        if(etUsuario.getText().toString().isEmpty()) {
+            Toast.makeText(CadUsuario.this, "Informe o usuário!", Toast.LENGTH_LONG).show();
+        }
+
+        if(etSenha.getText().toString().isEmpty()) {
+            Toast.makeText(CadUsuario.this, "Informe a senha!", Toast.LENGTH_LONG).show();
+        }
+
         Usuario usuario = new Usuario();
 
         usuario.setUsuario(etUsuario.getText().toString());
         usuario.setSenha(etSenha.getText().toString());
+
         usuario.setEmail(etEmail.getText().toString());
 
         api.salvarUser(usuario)
@@ -46,15 +56,16 @@ public class CadUsuario extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         Toast.makeText(CadUsuario.this,
-                                "Gravado com sucesso!", Toast.LENGTH_SHORT).show();
+                                "Usuário criado com sucesso!", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onFailure(Call<Void> call, Throwable t) {
                         Toast.makeText(CadUsuario.this,
-                                "Deu ruim", Toast.LENGTH_SHORT).show();
+                                "Deu ruim :/", Toast.LENGTH_SHORT).show();
 
                     }
+
                 });
     }
 
@@ -69,5 +80,11 @@ public class CadUsuario extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();
+    }
+
+    private void goLogin(View v) {
+        Intent proximaTela = new Intent(this, MainActivity.class);
+        proximaTela.putExtra("USUARIO", etUsuario.getText().toString());
+        startActivity(proximaTela);
     }
 }

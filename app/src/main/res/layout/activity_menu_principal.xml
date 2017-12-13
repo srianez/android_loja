@@ -4,62 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="br.com.silas.breja.MenuPrincipal">
 
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/addBreja"
-        android:layout_width="79dp"
-        android:layout_height="89dp"
-        android:clickable="true"
-        app:backgroundTint="@color/colorPrimary"
-        app:rippleColor="@color/colorPrimary"
-        app:srcCompat="@android:drawable/ic_input_add"
-        tools:layout_editor_absoluteX="52dp"
-        tools:layout_editor_absoluteY="48dp" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/addTipo"
-        android:layout_width="79dp"
-        android:layout_height="91dp"
-        android:clickable="true"
-        app:backgroundTint="@color/colorPrimary"
-        app:srcCompat="@android:drawable/ic_input_add"
-        tools:layout_editor_absoluteX="256dp"
-        tools:layout_editor_absoluteY="48dp" />
-
-    <TextView
-        android:id="@+id/textNewBreja"
-        android:layout_width="75dp"
-        android:layout_height="22dp"
-        android:text="Nova Breja"
-        tools:layout_editor_absoluteX="56dp"
-        tools:layout_editor_absoluteY="127dp" />
-
-    <TextView
-        android:id="@+id/textNewTipo"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/formMenu"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Novo Tipo"
-        tools:layout_editor_absoluteX="264dp"
-        tools:layout_editor_absoluteY="135dp" />
+        android:layout_centerInParent="true"
+        android:orientation="vertical" >
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/findTodasBrejas"
-        android:layout_width="79dp"
-        android:layout_height="91dp"
-        android:clickable="true"
-        app:backgroundTint="@color/colorPrimary"
-        app:srcCompat="@android:drawable/ic_search_category_default"
-        tools:layout_editor_absoluteX="58dp"
-        tools:layout_editor_absoluteY="180dp" />
+    <Button
+        android:id="@+id/buttonAddBreja"
+        style="@android:style/Widget.Material.Light.Button"
+        android:layout_width="358dp"
+        android:layout_height="wrap_content"
+        android:onClick="goCadItem"
+        android:text="Add Breja"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="25dp" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="80dp"
-        android:layout_height="23dp"
+    <Button
+        android:id="@+id/buttonListBreja"
+        style="@android:style/Widget.Material.Light.Button"
+        android:layout_width="358dp"
+        android:layout_height="wrap_content"
         android:text="Listar Brejas"
-        tools:layout_editor_absoluteX="58dp"
-        tools:layout_editor_absoluteY="259dp" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="92dp" />
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

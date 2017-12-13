@@ -2,19 +2,19 @@ package br.com.silas.breja.model;
 
 public class Item {
 
-    private int id;
+    private String id;
     private String nome;
     private String tipo;
     private String fabricante;
     private String descricao;
-    private double valor;
+    private String valor;
     private int avaliacao;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -50,11 +50,11 @@ public class Item {
         this.descricao = descricao;
     }
 
-    public double getValor() {
+    public String getValor() {
         return valor;
     }
 
-    public void setValor(double valor) {
+    public void setValor(String valor) {
         this.valor = valor;
     }
 
