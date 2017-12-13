@@ -17,4 +17,5 @@ public class MenuPrincipal extends AppCompatActivity {
         Intent proximaTela = new Intent(this, CadItem.class);
         startActivity(proximaTela);
     }
+
 }

@@ -27,14 +27,15 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="25dp" />
 
-    <Button
-        android:id="@+id/buttonListBreja"
-        style="@android:style/Widget.Material.Light.Button"
-        android:layout_width="358dp"
-        android:layout_height="wrap_content"
-        android:text="Listar Brejas"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="92dp" />
+        <Button
+            android:id="@+id/buttonListBreja"
+            style="@android:style/Widget.Material.Light.Button"
+            android:layout_width="358dp"
+            android:layout_height="wrap_content"
+            android:onClick="goListItem"
+            android:text="Listar Brejas"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="92dp" />
 
     </LinearLayout>
 
