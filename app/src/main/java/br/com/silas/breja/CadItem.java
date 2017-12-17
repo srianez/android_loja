@@ -46,13 +46,14 @@ public class CadItem extends AppCompatActivity {
     }
 
     public void salvarItem(View v) {
-        showProgress("Breja", "Salvando a breja...");
-
-        BrejaAPI api = getRetrofit().create(BrejaAPI.class);
 
         if(txtNome.getText().toString().isEmpty()) {
             Toast.makeText(CadItem.this, "Informe ao menos o nome da breja né fera?!", Toast.LENGTH_LONG).show();
         }
+
+        showProgress("Breja", "Salvando a breja...");
+
+        BrejaAPI api = getRetrofit().create(BrejaAPI.class);
 
         Item item = new Item();
 

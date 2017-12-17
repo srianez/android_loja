@@ -29,6 +29,7 @@
         <activity android:name=".CadUsuario" />
         <activity android:name=".CadItem" />
         <activity android:name=".MenuPrincipal" />
+        <activity android:name=".ListarBrejas"></activity>
     </application>
 
 </manifest>

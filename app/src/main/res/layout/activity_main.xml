@@ -60,5 +60,14 @@
             android:layout_marginRight="10dp"
             android:onClick="goCadUsuario"
             android:text="Novo usuário" />
+
+        <ProgressBar
+            android:id="@+id/login_progressL"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center"
+            android:visibility="gone" />
     </LinearLayout>
 </RelativeLayout>

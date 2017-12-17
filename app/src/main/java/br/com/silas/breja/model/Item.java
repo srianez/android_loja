@@ -8,7 +8,6 @@ public class Item {
     private String fabricante;
     private String descricao;
     private String valor;
-    private int avaliacao;
 
     public String getId() {
         return id;
@@ -58,12 +57,31 @@ public class Item {
         this.valor = valor;
     }
 
-    public int getAvaliacao() {
-        return avaliacao;
+    public Item() {
+
     }
 
-    public void setAvaliacao(int avaliacao) {
-        this.avaliacao = avaliacao;
+    public Item(String id, String nome, String tipo, String fabricante, String descricao, String valor) {
+        this.id = id;
+        this.nome = nome;
+        this.tipo = tipo;
+        this.fabricante = fabricante;
+        this.descricao = descricao;
+        this.valor = valor;
+    }
+
+    public Item(String nome, String descricao) {
+        this.nome = nome;
+        this.descricao = descricao;
+    }
+
+    @Override
+    public String toString() {
+        return "Breja{" +
+                "nome='" + nome + '\'' +
+                ", tipo='" + tipo + '\'' +
+                ", fabricante='" + fabricante + '\'' +
+                '}';
     }
 
 }

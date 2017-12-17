@@ -15,25 +15,33 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="7dp"
+        tools:layout_editor_absoluteY="0dp">
 
-    <Button
-        android:id="@+id/buttonAddBreja"
-        style="@android:style/Widget.Material.Light.Button"
-        android:layout_width="358dp"
-        android:layout_height="wrap_content"
-        android:onClick="goCadItem"
-        android:text="Add Breja"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="25dp" />
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/beer" />
+
+        <Button
+            android:id="@+id/buttonAddBreja"
+            style="@android:style/Widget.Material.Light.Button"
+            android:layout_width="358dp"
+            android:layout_height="wrap_content"
+            android:onClick="goCadItem"
+            android:text="Add Breja"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="25dp" />
 
         <Button
             android:id="@+id/buttonListBreja"
             style="@android:style/Widget.Material.Light.Button"
             android:layout_width="358dp"
             android:layout_height="wrap_content"
-            android:onClick="goListItem"
             android:text="Listar Brejas"
+            android:onClick="goListItem"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="92dp" />
 

@@ -40,10 +40,6 @@ public class CadUsuario extends AppCompatActivity {
 
     public void salvarUsuario(View v) {
 
-        showProgress("Usuário", "Salvando usuário...");
-
-        BrejaAPI api = getRetrofit().create(BrejaAPI.class);
-
         if(etUsuario.getText().toString().isEmpty()) {
             Toast.makeText(CadUsuario.this, "Informe o usuário!", Toast.LENGTH_LONG).show();
         }
@@ -51,6 +47,10 @@ public class CadUsuario extends AppCompatActivity {
         if(etSenha.getText().toString().isEmpty()) {
             Toast.makeText(CadUsuario.this, "Informe a senha!", Toast.LENGTH_LONG).show();
         }
+
+        showProgress("Usuário", "Salvando usuário...");
+
+        BrejaAPI api = getRetrofit().create(BrejaAPI.class);
 
         Usuario usuario = new Usuario();
 

@@ -18,4 +18,9 @@ public class MenuPrincipal extends AppCompatActivity {
         startActivity(proximaTela);
     }
 
+    public void goListItem(View v) {
+        Intent proximaTela = new Intent(this, ListarBrejas.class);
+        startActivity(proximaTela);
+    }
+
 }

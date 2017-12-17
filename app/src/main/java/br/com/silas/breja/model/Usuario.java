@@ -1,6 +1,8 @@
 package br.com.silas.breja.model;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable {
 
     private String usuario;
     private String senha;
@@ -29,5 +31,6 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
 
 }

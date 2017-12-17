@@ -1,1 +1,21 @@
-<resources></resources>
+<resources>
+    <string name="app_name">"BrejaApp"</string>
+    <string name="nomeEmpresa">Silas Ianez</string>
+
+    <string name="hintNomeBreja">Nome</string>
+    <string name="hintTipo">Tipo</string>
+    <string name="hintFabricante">Fabricante</string>
+
+    <string name="filtroListaBreja">Filter</string>
+
+    <string name="erroEncontrarBreja">Erro eo buscar breja</string>
+
+    <string name="deletarBreja">Deletar Breja</string>
+    <string name="msgDeletarBreja">Deseja remover essa breja?</string>
+    <string name="msgDeletarUsuarioOk">User has been deleted with success</string>
+
+    <string name="erroConexao">Conection Error.\\nDo you have an internet ?</string>
+
+</resources>
+
+
