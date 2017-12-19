@@ -2,10 +2,13 @@ package br.com.silas.breja;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AutoCompleteTextView;
@@ -13,7 +16,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import br.com.silas.breja.api.BrejaAPI;
-import br.com.silas.breja.model.Item;
+import br.com.silas.breja.model.Breja;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -22,7 +25,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ManterBreja extends AppCompatActivity {
 
-    private Item i;
+    private Breja i;
+
+    ListarBrejas listarBrejas = new ListarBrejas();
 
     private AutoCompleteTextView txtId, txtNome, txtTipo, txtDescricao;
     private FloatingActionButton fab;
@@ -30,14 +35,18 @@ public class ManterBreja extends AppCompatActivity {
 
     private ProgressDialog progressDialog;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manter_breja);
+
+        //comentei o código no activity_manter_breja.xml pra colocar o menu nesse activity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        i = (Item) getIntent().getSerializableExtra("Item");
+        i = (Breja) getIntent().getSerializableExtra("Breja");
 
         txtId = (AutoCompleteTextView) findViewById(R.id.txtId);
         txtNome = (AutoCompleteTextView) findViewById(R.id.txtNome);
@@ -125,10 +134,10 @@ public class ManterBreja extends AppCompatActivity {
         if(verificaCampos())
         {
                 BrejaAPI api = getRetrofit().create(BrejaAPI.class);
-                Item u = new Item(txtId.getText().toString(),
-                                  txtNome.getText().toString(),
-                                  txtTipo.getText().toString(),
-                                  txtDescricao.getText().toString());
+                 Breja u = new Breja(txtId.getText().toString(),
+                                     txtNome.getText().toString(),
+                                     txtTipo.getText().toString(),
+                                     txtDescricao.getText().toString());
                 api.atualizar(u).enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response)

@@ -11,15 +11,15 @@ import android.widget.TextView;
 import java.util.List;
 
 import br.com.silas.breja.R;
-import br.com.silas.breja.model.Item;
+import br.com.silas.breja.model.Breja;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.RecyclerTesteViewHolder> {
  
     public static ClickRecyclerView_Interface clickRecyclerViewInterface;
     Context mctx;
-    private List<Item> mList;
+    private List<Breja> mList;
  
-    public RecyclerAdapter(Context ctx, List<Item> list, ClickRecyclerView_Interface clickRecyclerViewInterface) {
+    public RecyclerAdapter(Context ctx, List<Breja> list, ClickRecyclerView_Interface clickRecyclerViewInterface) {
         this.mctx = ctx;
         this.mList = list;
         this.clickRecyclerViewInterface = clickRecyclerViewInterface;
@@ -33,7 +33,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
  
     @Override
     public void onBindViewHolder(RecyclerTesteViewHolder viewHolder, int i) {
-        Item item = mList.get(i);
+        Breja item = mList.get(i);
 
         viewHolder.setIsRecyclable(false);
 

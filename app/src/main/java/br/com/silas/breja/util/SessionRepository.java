@@ -1,23 +1,23 @@
 package br.com.silas.breja.util;
 
 
-import br.com.silas.breja.model.Item;
+import br.com.silas.breja.model.Breja;
 
 public class SessionRepository
 {
-    static Item i;
+    static Breja i;
 
     public SessionRepository(){}
 
-    public SessionRepository(Item i)
+    public SessionRepository(Breja i)
     {
         this.i = i;
     }
 
-    public Item getItem()
+    public Breja getItem()
     {
         return this.i;
     }
 
-    public void setItem(Item i) {this.i = i;}
+    public void setItem(Breja i) {this.i = i;}
 }

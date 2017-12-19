@@ -13,6 +13,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.EditText;
 
 import java.io.IOException;
@@ -20,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.silas.breja.api.BrejaAPI;
-import br.com.silas.breja.model.Item;
+import br.com.silas.breja.model.Breja;
 import br.com.silas.breja.util.ClickRecyclerView_Interface;
 import br.com.silas.breja.util.RecyclerAdapter;
 import br.com.silas.breja.util.SessionRepository;
@@ -32,14 +34,42 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ListarBrejas extends AppCompatActivity implements ClickRecyclerView_Interface {
 
+    private Intent intent;
+
     private SessionRepository sr = new SessionRepository();
     private EditText etFiltroListaBreja;
 
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
     RecyclerAdapter adapter;
-    private List<Item> brejasListas = new ArrayList<>();
+    private List<Breja> brejasListas = new ArrayList<>();
     private FloatingActionButton floatingActionButton;
+
+    // cria o menu_minhas_brejas
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_minhas_brejas, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    // verifica qual foi selecionado
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //Valida o item de menu_minhas_brejas escolhido
+        if (item.getItemId() == R.id.menu_nova_breja){
+            intent = new Intent(this,CadBreja.class);
+            startActivity(intent);
+
+        } else if(item.getItemId() == R.id.menu_sair) {
+            intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        } else if(item.getItemId() == R.id.menu_sobre) {
+            intent = new Intent(this, Sobre.class);
+            startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
 
     @Override
@@ -96,7 +126,7 @@ public class ListarBrejas extends AppCompatActivity implements ClickRecyclerView
     @Override
     public void onCustomClick(Object object)
     {
-        Item i = (Item) object;
+        Breja i = (Breja) object;
 
         if(i==null)
         {
@@ -106,7 +136,7 @@ public class ListarBrejas extends AppCompatActivity implements ClickRecyclerView
         {
             Intent intent = new Intent(ListarBrejas.this, ManterBreja.class);
 
-            intent.putExtra("Item", i);
+            intent.putExtra("Breja", i);
             startActivity(intent);
         }
     }
@@ -114,7 +144,7 @@ public class ListarBrejas extends AppCompatActivity implements ClickRecyclerView
     @Override
     public void onCloseButton(Object object)
     {
-        final Item u = (Item) object;
+        final Breja u = (Breja) object;
 
         AlertDialog.Builder builder;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)

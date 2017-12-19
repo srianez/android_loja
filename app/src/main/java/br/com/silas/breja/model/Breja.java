@@ -2,7 +2,7 @@ package br.com.silas.breja.model;
 
 import java.io.Serializable;
 
-public class Item implements Serializable {
+public class Breja implements Serializable {
 
     private String id;
     private String nome;
@@ -59,11 +59,11 @@ public class Item implements Serializable {
         this.valor = valor;
     }
 
-    public Item() {
+    public Breja() {
 
     }
 
-    public Item(String id, String nome, String tipo, String fabricante, String descricao, String valor) {
+    public Breja(String id, String nome, String tipo, String fabricante, String descricao, String valor) {
         this.id = id;
         this.nome = nome;
         this.tipo = tipo;
@@ -72,12 +72,12 @@ public class Item implements Serializable {
         this.valor = valor;
     }
 
-    public Item(String nome, String descricao) {
+    public Breja(String nome, String descricao) {
         this.nome = nome;
         this.descricao = descricao;
     }
 
-    public Item(String id, String nome, String tipo, String descricao) {
+    public Breja(String id, String nome, String tipo, String descricao) {
         this.id = id;
         this.nome = nome;
         this.tipo = tipo;
@@ -89,7 +89,6 @@ public class Item implements Serializable {
         return "Breja{" +
                 "nome='" + nome + '\'' +
                 ", tipo='" + tipo + '\'' +
-                ", fabricante='" + fabricante + '\'' +
                 '}';
     }
 

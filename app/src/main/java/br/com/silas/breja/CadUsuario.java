@@ -93,7 +93,7 @@ public class CadUsuario extends AppCompatActivity {
     }
 
     private void goLogin(View v) {
-        Intent proximaTela = new Intent(this, MainActivity.class);
+        Intent proximaTela = new Intent(this, LoginActivity.class);
         //proximaTela.putExtra("USUARIO", etUsuario.getText().toString());
         startActivity(proximaTela);
     }

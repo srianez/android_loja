@@ -2,7 +2,7 @@ package br.com.silas.breja.api;
 
 import java.util.List;
 
-import br.com.silas.breja.model.Item;
+import br.com.silas.breja.model.Breja;
 import br.com.silas.breja.model.Usuario;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -14,31 +14,30 @@ import retrofit2.http.Path;
 
 public interface BrejaAPI {
 
-    //busca todos itens
-    @GET("/item")
-    Call<List<Item>> findAll();
+    @GET("/breja")
+    Call<List<Breja>> findAll();
 
     //busca item pelo nome
-    @GET("/item/nome/{nome}")
-    Call<Item> buscarItemNome(@Path("nome")String nome);
+    @GET("/breja/nome/{nome}")
+    Call<Breja> buscarItemNome(@Path("nome")String nome);
 
     //busca item pelo nome (conteudo)
-    @GET("/item/nomeParcial/{nome}")
-    Call<List<Item>> buscarItemNomeParc(@Path("nome")String nome);
+    @GET("/breja/nomeParcial/{nome}")
+    Call<List<Breja>> buscarItemNomeParc(@Path("nome")String nome);
 
     //busca item pelo id
-    @GET("/item/id/{id}")
-    Call<Item> buscarItemId(@Path("id")int id);
+    @GET("/breja/id/{id}")
+    Call<Breja> buscarItemId(@Path("id")int id);
 
     //salva item
-    @POST("/item")
-    Call<Void> salvarItem(@Body Item item);
+    @POST("/breja")
+    Call<Void> salvarItem(@Body Breja breja);
 
-    @PUT("/item")
-    Call<Void> atualizar(@Body Item i);
+    @PUT("/breja")
+    Call<Void> atualizar(@Body Breja i);
 
     //delete item
-    @DELETE("/item/id/{id}")
+    @DELETE("/breja/id/{id}")
     Call<Void> deleteById(@Body String id);
 
     //USUARIO

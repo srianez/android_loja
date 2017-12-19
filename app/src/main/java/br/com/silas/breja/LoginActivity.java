@@ -20,7 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import br.com.silas.breja.api.BrejaAPI;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private EditText etUsuario;
     private EditText etSenha;
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         etUsuario = (EditText) findViewById(R.id.txUsuario);
         etSenha = (EditText) findViewById(R.id.txtPassword);
@@ -55,9 +55,9 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                                Intent intent = new Intent(MainActivity.this,
-                                        MenuPrincipal.class);
-                                MainActivity.this.finish();
+                                Intent intent = new Intent(LoginActivity.this,
+                                        ListarBrejas.class);
+                                LoginActivity.this.finish();
                                 startActivity(intent);
                                 mProgressView.setVisibility(View.GONE);
 
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onFailure(Call<Usuario> call, Throwable t) {
-                                Toast.makeText(MainActivity.this, getString(R.string.erroEncontrarUser), Toast.LENGTH_LONG).show();
+                                Toast.makeText(LoginActivity.this, getString(R.string.erroEncontrarUser), Toast.LENGTH_LONG).show();
                                 etUsuario.setText("");
                                 etSenha.setText("");
                                 etUsuario.requestFocus();
