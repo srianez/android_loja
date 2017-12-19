@@ -19,82 +19,63 @@
         app:layout_constraintVertical_bias="0.0"
         tools:layout_editor_absoluteX="16dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Nome"
-            android:textColor="#000000" />
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/txtNome"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="0dp" />
+            <EditText
+                android:id="@+id/txtNome"
+                android:hint="Nome"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="0dp" />
+        </android.support.design.widget.TextInputLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Tipo"
-            android:textColor="#000000" />
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/txtTipo"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="0dp" />
+            <EditText
+                android:id="@+id/txtTipo"
+                android:hint="Tipo"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="0dp" />
+        </android.support.design.widget.TextInputLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Comentário"
-            android:textColor="#000000" />
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/txtDescricao"
-            android:layout_width="fill_parent"
-            android:layout_height="56dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="0dp"
-            android:ems="10"
-            android:inputType="textMultiLine" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Valor"
-            android:textColor="#000000" />
-
-        <EditText
-            android:id="@+id/txtValor"
-            android:layout_width="190dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="0dp"
-            android:inputType="numberDecimal" />
+            <EditText
+                android:id="@+id/txtDescricao"
+                android:hint="Comentário"
+                android:layout_width="fill_parent"
+                android:layout_height="56dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="0dp"
+                android:ems="10"
+                android:inputType="textMultiLine" />
+        </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/floatingActionButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
-            android:layout_marginEnd="36dp"
-            android:clickable="true"
-            android:onClick="salvarItem"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="25dp"
             app:backgroundTint="@color/colorPrimaryDark"
             app:elevation="11dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@android:drawable/ic_menu_save"
-            tools:layout_editor_absoluteY="429dp" />
+            app:fabSize="normal"
+            android:onClick="salvarItem"
+            app:srcCompat="@android:drawable/ic_menu_save"/>
 
     </LinearLayout>
 

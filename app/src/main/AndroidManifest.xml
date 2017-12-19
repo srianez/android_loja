@@ -11,25 +11,40 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="Brejas"
+        android:label="Tomei"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".SplashScreen"
             android:theme="@style/FullSreen">
             //add o style full screen no activity SplashScreen
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".MainActivity" />
-        <activity android:name=".CadUsuario" />
-        <activity android:name=".CadItem" />
+
+        <activity android:name=".CadUsuario"
+                  android:label="Novo Usuário" />
+
+        <activity android:name=".CadItem"
+                  android:label="Nova Breja"/>
+
         <activity android:name=".MenuPrincipal" />
-        <activity android:name=".ListarBrejas"></activity>
+
+        <activity android:name=".ListarBrejas"
+                  android:label="Minhas Brejas"/>
+
+        <activity
+            android:name=".ManterBreja"
+            android:label="Atualizar Breja"
+            android:parentActivityName=".ManterBreja"
+            android:theme="@style/AppTheme.NoActionBar" />
+
     </application>
 
 </manifest>

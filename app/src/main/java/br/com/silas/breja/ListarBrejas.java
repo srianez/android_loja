@@ -1,13 +1,19 @@
 package br.com.silas.breja;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Build;
 import android.os.NetworkOnMainThreadException;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,7 +22,8 @@ import java.util.List;
 import br.com.silas.breja.api.BrejaAPI;
 import br.com.silas.breja.model.Item;
 import br.com.silas.breja.util.ClickRecyclerView_Interface;
-import br.com.silas.breja.util.RecyclerTesteAdapter;
+import br.com.silas.breja.util.RecyclerAdapter;
+import br.com.silas.breja.util.SessionRepository;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -25,9 +32,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ListarBrejas extends AppCompatActivity implements ClickRecyclerView_Interface {
 
+    private SessionRepository sr = new SessionRepository();
+    private EditText etFiltroListaBreja;
+
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
-    RecyclerTesteAdapter adapter;
+    RecyclerAdapter adapter;
     private List<Item> brejasListas = new ArrayList<>();
     private FloatingActionButton floatingActionButton;
 
@@ -37,54 +47,98 @@ public class ListarBrejas extends AppCompatActivity implements ClickRecyclerView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar_brejas);
 
-        setaRecyclerView();
+        onKeyUpEditText();
+        setaRecyclerView("");
 
-        setaButtons();
-        //listenersButtons();
     }
-    public void setaRecyclerView(){
+    public void setaRecyclerView(String filtro){
 
         //Aqui é instanciado o Recyclerview
-        retornaBrejasSincronizado();
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_recyclerteste);
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
+        if(!filtro.equals("") && filtro !=null) {
+            retornaBrejasSincronizado(filtro);
+            mRecyclerView = (RecyclerView) findViewById(R.id.recycler_recyclerbreja);
+            mLayoutManager = new LinearLayoutManager(this);
+            mRecyclerView.setLayoutManager(mLayoutManager);
 
-        adapter = new RecyclerTesteAdapter(this, brejasListas, this);
-        mRecyclerView.setAdapter(adapter);
+            adapter = new RecyclerAdapter(this, brejasListas, this);
+            mRecyclerView.setAdapter(adapter);
+        } else {
+            retornaBrejasSincronizado();
+            mRecyclerView = (RecyclerView) findViewById(R.id.recycler_recyclerbreja);
+            mLayoutManager = new LinearLayoutManager(this);
+            mRecyclerView.setLayoutManager(mLayoutManager);
+
+            adapter = new RecyclerAdapter(this, brejasListas, this);
+            mRecyclerView.setAdapter(adapter);
+        }
     }
 
-    public void setaButtons(){
-
-        floatingActionButton = (FloatingActionButton) findViewById(R.id.fab_fabteste);
-
-    }
-    @Override
-    public void onCustomClick(Object object) {
-        Item item = (Item) object;
-        String nome = item.getNome();
-
-    }
-
-
-    public void listenersButtons() {
-
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+    private void onKeyUpEditText()
+    {
+        etFiltroListaBreja = (EditText) findViewById(R.id.etFiltroListaBreja);
+        TextWatcher fieldValidatorTextWatcher = new TextWatcher() {
             @Override
-            public void onClick(View v) {
-
-                // Cria uma nova pessoa chamada Renan Teles
-                Item item = new Item();
-                item.setNome("Renan Teles");
-
-                //Adiciona a pessoa1 e avisa o adapter que o conteúdo
-                //da lista foi alterado
-                brejasListas.add(item);
-                adapter.notifyDataSetChanged();
-
+            public void afterTextChanged(Editable s) {
             }
-        });
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                setaRecyclerView(etFiltroListaBreja.getText().toString());
+            }
+        };
+        etFiltroListaBreja.addTextChangedListener(fieldValidatorTextWatcher);
     }
+
+    @Override
+    public void onCustomClick(Object object)
+    {
+        Item i = (Item) object;
+
+        if(i==null)
+        {
+            Snackbar.make(getWindow().getDecorView().getRootView(), "Breja não encontrada", Snackbar.LENGTH_LONG).show();
+        }
+        else
+        {
+            Intent intent = new Intent(ListarBrejas.this, ManterBreja.class);
+
+            intent.putExtra("Item", i);
+            startActivity(intent);
+        }
+    }
+
+    @Override
+    public void onCloseButton(Object object)
+    {
+        final Item u = (Item) object;
+
+        AlertDialog.Builder builder;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+        {
+            builder = new AlertDialog.Builder(getWindow().getDecorView().getRootView().getContext(), android.R.style.Theme_Material_Dialog_Alert);
+        } else {
+            builder = new AlertDialog.Builder(getWindow().getDecorView().getRootView().getContext());
+        }
+        builder.setTitle("Remover breja")
+                .setMessage("Deseja remover essa breja?")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        apagaBreja(u.getId());
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Faça nada
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+    }
+
 
     public Retrofit getRetrofit()
     {
@@ -95,7 +149,7 @@ public class ListarBrejas extends AppCompatActivity implements ClickRecyclerView
     }
 
     private void retornaBrejasSincronizado()
-    { // metodo sincrono precisa estar em uma thread, start para iniciar e join pra esperar terminar
+    {
         Thread t = (new Thread()
         {
             public void run()
@@ -120,15 +174,42 @@ public class ListarBrejas extends AppCompatActivity implements ClickRecyclerView
         }
     }
 
-    private void apagaUsuario(String id)
+    private void retornaBrejasSincronizado(final String filtro)
+    {
+        Thread t = (new Thread()
+        {
+            public void run()
+            {
+                try
+                {
+                    BrejaAPI api = getRetrofit().create(BrejaAPI.class);
+                    brejasListas = api.buscarItemNomeParc(filtro).execute().body();
+                }
+                catch(NetworkOnMainThreadException | IOException e)
+                {
+                    System.out.println(e.getMessage());
+                }
+            }
+        });
+
+        t.start();
+        try {
+            t.join();
+        } catch (InterruptedException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private void apagaBreja(String id)
     {
         BrejaAPI api = getRetrofit().create(BrejaAPI.class);
 
         api.deleteById(id).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                Snackbar.make(getWindow().getDecorView().getRootView(), getString(R.string.msgDeletarUsuarioOk), Snackbar.LENGTH_LONG).show();
-                setaRecyclerView();
+                Snackbar.make(getWindow().getDecorView().getRootView(), getString(R.string.msgDeletarBrejaOk), Snackbar.LENGTH_LONG).show();
+                setaRecyclerView("");
             }
 
             @Override

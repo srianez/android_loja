@@ -1,6 +1,8 @@
 package br.com.silas.breja.model;
 
-public class Item {
+import java.io.Serializable;
+
+public class Item implements Serializable {
 
     private String id;
     private String nome;
@@ -72,6 +74,13 @@ public class Item {
 
     public Item(String nome, String descricao) {
         this.nome = nome;
+        this.descricao = descricao;
+    }
+
+    public Item(String id, String nome, String tipo, String descricao) {
+        this.id = id;
+        this.nome = nome;
+        this.tipo = tipo;
         this.descricao = descricao;
     }
 

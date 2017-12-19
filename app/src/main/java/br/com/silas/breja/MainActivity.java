@@ -38,15 +38,9 @@ public class MainActivity extends AppCompatActivity {
         mProgressView = (ProgressBar) findViewById(R.id.login_progressL);
 
     }
-
     public void goCadUsuario(View v) {
         Intent proximaTela = new Intent(this, CadUsuario.class);
         startActivity(proximaTela);
-    }
-
-    public void goMenu2(View v) {
-       Intent proximaTela = new Intent(this, MenuPrincipal.class);
-       startActivity(proximaTela);
     }
 
     public void goMenu(View v) {
@@ -71,8 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onFailure(Call<Usuario> call, Throwable t) {
-                                Toast.makeText(MainActivity.this,
-                                        "Usuário não encontrado!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(MainActivity.this, getString(R.string.erroEncontrarUser), Toast.LENGTH_LONG).show();
                                 etUsuario.setText("");
                                 etSenha.setText("");
                                 etUsuario.requestFocus();

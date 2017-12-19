@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">"BrejaApp"</string>
+    <string name="app_name">"Tomei"</string>
     <string name="nomeEmpresa">Silas Ianez</string>
 
     <string name="hintNomeBreja">Nome</string>
@@ -8,13 +8,17 @@
 
     <string name="filtroListaBreja">Filter</string>
 
-    <string name="erroEncontrarBreja">Erro eo buscar breja</string>
+    <string name="erroEncontrarBreja">Erro ao buscar breja!</string>
+    <string name="erroEncontrarUser">Usuário não encontrado!</string>
 
     <string name="deletarBreja">Deletar Breja</string>
     <string name="msgDeletarBreja">Deseja remover essa breja?</string>
-    <string name="msgDeletarUsuarioOk">User has been deleted with success</string>
+    <string name="msgDeletarBrejaOk">Breja removida com sucesso</string>
 
-    <string name="erroConexao">Conection Error.\\nDo you have an internet ?</string>
+    <string name="erroConexao">Erro de conexão! Está com internet?</string>
+
+    <string name="msgAltBrejaSucess">Breja alterada com sucesso! :)</string>
+    <string name="msgAltBrejaFail">Ohhh shit... deu erro! :(</string>
 
 </resources>
 

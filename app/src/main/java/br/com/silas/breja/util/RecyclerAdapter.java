@@ -1,7 +1,7 @@
 package br.com.silas.breja.util;
 
 import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,13 +13,13 @@ import java.util.List;
 import br.com.silas.breja.R;
 import br.com.silas.breja.model.Item;
 
-public class RecyclerTesteAdapter extends RecyclerView.Adapter<RecyclerTesteAdapter.RecyclerTesteViewHolder> {
+public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.RecyclerTesteViewHolder> {
  
     public static ClickRecyclerView_Interface clickRecyclerViewInterface;
     Context mctx;
     private List<Item> mList;
  
-    public RecyclerTesteAdapter(Context ctx, List<Item> list, ClickRecyclerView_Interface clickRecyclerViewInterface) {
+    public RecyclerAdapter(Context ctx, List<Item> list, ClickRecyclerView_Interface clickRecyclerViewInterface) {
         this.mctx = ctx;
         this.mList = list;
         this.clickRecyclerViewInterface = clickRecyclerViewInterface;
@@ -37,12 +37,23 @@ public class RecyclerTesteAdapter extends RecyclerView.Adapter<RecyclerTesteAdap
 
         viewHolder.setIsRecyclable(false);
 
+        viewHolder.viewID.setText(viewHolder.viewID.getText().toString()+": "+item.getId());
         viewHolder.viewNome.setText(viewHolder.viewNome.getText().toString()+": "+item.getNome());
         viewHolder.viewTipo.setText(viewHolder.viewTipo.getText().toString()+": "+item.getTipo());
         viewHolder.viewDescricao.setText(viewHolder.viewDescricao.getText().toString()+": "+item.getDescricao());
  
     }
- 
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
     @Override
     public int getItemCount() {
         return mList.size();
@@ -51,23 +62,31 @@ public class RecyclerTesteAdapter extends RecyclerView.Adapter<RecyclerTesteAdap
  
     protected class RecyclerTesteViewHolder extends RecyclerView.ViewHolder {
  
-        protected TextView viewNome, viewTipo, viewDescricao;
+        protected TextView viewNome, viewTipo, viewDescricao, viewID;
+        protected FloatingActionButton btnRemoverUserBreja;
  
         public RecyclerTesteViewHolder(final View itemView) {
             super(itemView);
- 
+
+            viewID = (TextView) itemView.findViewById(R.id.textview_id);
             viewNome = (TextView) itemView.findViewById(R.id.textview_nome);
             viewTipo = (TextView) itemView.findViewById(R.id.textview_tipo);
             viewDescricao = (TextView) itemView.findViewById(R.id.textview_descricao);
-            //btnRemoverUserListaUsuario = (FloatingActionButton) itemView.findViewById(R.id.btnRemoverUserListaUsuario);
+            btnRemoverUserBreja = (FloatingActionButton) itemView.findViewById(R.id.btnRemover);
 
-            //Setup the click listener
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
- 
                     clickRecyclerViewInterface.onCustomClick(mList.get(getLayoutPosition()));
- 
+                }
+            });
+
+            btnRemoverUserBreja.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    clickRecyclerViewInterface.onCloseButton(mList.get(getLayoutPosition()));
                 }
             });
         }

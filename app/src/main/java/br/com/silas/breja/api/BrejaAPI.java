@@ -9,6 +9,7 @@ import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface BrejaAPI {
@@ -32,6 +33,9 @@ public interface BrejaAPI {
     //salva item
     @POST("/item")
     Call<Void> salvarItem(@Body Item item);
+
+    @PUT("/item")
+    Call<Void> atualizar(@Body Item i);
 
     //delete item
     @DELETE("/item/id/{id}")

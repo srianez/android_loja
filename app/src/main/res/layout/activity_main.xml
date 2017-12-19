@@ -20,14 +20,14 @@
             android:layout_margin="10dp"
             android:text="Usuário"
             android:textColor="#000000"
-            tools:text="USUARIO"/>
+            tools:text="Usuário"/>
         <EditText
             android:id="@+id/txUsuario"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="0dp" />
+            android:layout_marginRight="0dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

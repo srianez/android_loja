@@ -26,7 +26,6 @@ public class CadItem extends AppCompatActivity {
     private EditText txtNome;
     private EditText txtTipo;
     private EditText txtDescricao;
-    private EditText txtValor;
 
     private ProgressDialog progressDialog;
 
@@ -39,8 +38,6 @@ public class CadItem extends AppCompatActivity {
         txtNome = (EditText) findViewById(R.id.txtNome);
         txtTipo = (EditText) findViewById(R.id.txtTipo);
         txtDescricao = (EditText) findViewById(R.id.txtDescricao);
-
-        txtValor = (EditText) findViewById(R.id.txtValor);
 
         progressDialog = new ProgressDialog(this);
     }
@@ -60,7 +57,6 @@ public class CadItem extends AppCompatActivity {
         item.setNome(txtNome.getText().toString());
         item.setTipo(txtTipo.getText().toString());
         item.setDescricao(txtDescricao.getText().toString());
-        item.setValor(txtValor.getText().toString());
 
         api.salvarItem(item)
                 .enqueue(new Callback<Void>() {
