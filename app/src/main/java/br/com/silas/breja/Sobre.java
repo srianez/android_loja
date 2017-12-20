@@ -22,14 +22,17 @@ public class Sobre extends AppCompatActivity {
         //Valida o item de menu_minhas_brejas escolhido
         if (item.getItemId() == R.id.menu_nova_breja){
             intent = new Intent(this,CadBreja.class);
+            Sobre.this.finish();
             startActivity(intent);
 
         } else if(item.getItemId() == R.id.menu_minhas_brejas) {
             intent = new Intent(this, ListarBrejas.class);
+            Sobre.this.finish();
             startActivity(intent);
 
         } else if(item.getItemId() == R.id.menu_sair) {
             intent = new Intent(this, LoginActivity.class);
+            Sobre.this.finish();
             startActivity(intent);
         }
 

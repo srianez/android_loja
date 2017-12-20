@@ -3,9 +3,12 @@ package br.com.silas.breja;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.NetworkOnMainThreadException;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,8 +18,13 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import br.com.silas.breja.api.BrejaAPI;
 import br.com.silas.breja.model.Breja;
+import br.com.silas.breja.util.RecyclerAdapter;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -36,13 +44,11 @@ public class ManterBreja extends AppCompatActivity {
     private ProgressDialog progressDialog;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manter_breja);
 
-        //comentei o código no activity_manter_breja.xml pra colocar o menu nesse activity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -146,6 +152,7 @@ public class ManterBreja extends AppCompatActivity {
                         bloqueaCampos();
                         escondeTeclado(v);
                         dismissProgress();
+
                     }
 
                     @Override

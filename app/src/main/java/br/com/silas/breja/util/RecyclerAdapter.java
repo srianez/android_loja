@@ -63,7 +63,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
     protected class RecyclerTesteViewHolder extends RecyclerView.ViewHolder {
  
         protected TextView viewNome, viewTipo, viewDescricao, viewID;
-        protected FloatingActionButton btnRemoverUserBreja;
+        protected FloatingActionButton btnRemoverBreja;
  
         public RecyclerTesteViewHolder(final View itemView) {
             super(itemView);
@@ -72,16 +72,19 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
             viewNome = (TextView) itemView.findViewById(R.id.textview_nome);
             viewTipo = (TextView) itemView.findViewById(R.id.textview_tipo);
             viewDescricao = (TextView) itemView.findViewById(R.id.textview_descricao);
-            btnRemoverUserBreja = (FloatingActionButton) itemView.findViewById(R.id.btnRemover);
+            btnRemoverBreja = (FloatingActionButton) itemView.findViewById(R.id.btnRemoverBreja);
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
+
                 @Override
                 public void onClick(View v) {
                     clickRecyclerViewInterface.onCustomClick(mList.get(getLayoutPosition()));
                 }
             });
 
-            btnRemoverUserBreja.setOnClickListener(new View.OnClickListener()
+
+            btnRemoverBreja.setOnClickListener(new View.OnClickListener()
             {
                 @Override
                 public void onClick(View v)

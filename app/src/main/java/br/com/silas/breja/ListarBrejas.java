@@ -58,13 +58,16 @@ public class ListarBrejas extends AppCompatActivity implements ClickRecyclerView
         //Valida o item de menu_minhas_brejas escolhido
         if (item.getItemId() == R.id.menu_nova_breja){
             intent = new Intent(this,CadBreja.class);
+            ListarBrejas.this.finish();
             startActivity(intent);
 
         } else if(item.getItemId() == R.id.menu_sair) {
             intent = new Intent(this, LoginActivity.class);
+            ListarBrejas.this.finish();
             startActivity(intent);
         } else if(item.getItemId() == R.id.menu_sobre) {
             intent = new Intent(this, Sobre.class);
+            ListarBrejas.this.finish();
             startActivity(intent);
         }
 
@@ -117,12 +120,14 @@ public class ListarBrejas extends AppCompatActivity implements ClickRecyclerView
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                setaRecyclerView(etFiltroListaBreja.getText().toString());
+                setaRecyclerView(etFiltroListaBreja.getText().toString().trim());
             }
         };
         etFiltroListaBreja.addTextChangedListener(fieldValidatorTextWatcher);
     }
 
+
+    //abre o activity para edição do cadastro
     @Override
     public void onCustomClick(Object object)
     {
@@ -140,6 +145,7 @@ public class ListarBrejas extends AppCompatActivity implements ClickRecyclerView
             startActivity(intent);
         }
     }
+
 
     @Override
     public void onCloseButton(Object object)
@@ -234,6 +240,7 @@ public class ListarBrejas extends AppCompatActivity implements ClickRecyclerView
     private void apagaBreja(String id)
     {
         BrejaAPI api = getRetrofit().create(BrejaAPI.class);
+
 
         api.deleteById(id).enqueue(new Callback<Void>() {
             @Override

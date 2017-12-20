@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -21,11 +23,37 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CadUsuario extends AppCompatActivity {
 
+    private Intent intent;
+
     private EditText etUsuario;
     private EditText etSenha;
     private EditText etEmail;
 
     private ProgressDialog progressDialog;
+
+    // cria o menu_minhas_brejas
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_novo_usuario, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    // verifica qual foi selecionado
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //Valida o item de menu_minhas_brejas escolhido
+        if (item.getItemId() == R.id.loggin){
+            intent = new Intent(this,LoginActivity.class);
+            CadUsuario.this.finish();
+            startActivity(intent);
+        } else if(item.getItemId() == R.id.menu_sobre) {
+            intent = new Intent(this, Sobre.class);
+            CadUsuario.this.finish();
+            startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

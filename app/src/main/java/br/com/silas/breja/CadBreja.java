@@ -46,14 +46,17 @@ public class CadBreja extends AppCompatActivity {
         //Valida o item de menu_minhas_brejas escolhido
         if (item.getItemId() == R.id.menu_minhas_brejas){
             intent = new Intent(this,ListarBrejas.class);
+            CadBreja.this.finish();
             startActivity(intent);
 
         } else if(item.getItemId() == R.id.menu_sair) {
             intent = new Intent(this, LoginActivity.class);
+            CadBreja.this.finish();
             startActivity(intent);
 
         } else if(item.getItemId() == R.id.menu_sobre) {
             intent = new Intent(this, Sobre.class);
+            CadBreja.this.finish();
             startActivity(intent);
         }
 

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -22,10 +24,12 @@ import br.com.silas.breja.api.BrejaAPI;
 
 public class LoginActivity extends AppCompatActivity {
 
+
     private EditText etUsuario;
     private EditText etSenha;
     private EditText etEmail;
     private ProgressBar mProgressView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(proximaTela);
     }
 
-    public void goMenu(View v) {
+    public void goMain(View v) {
 
         if (verificaCamposObrigatorios()){
                 escondeTeclado(v);
